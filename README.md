@@ -8,4 +8,5 @@ The emphasis is on clarity, not complexity: no real airline data, no external AP
 
 1. Generating reproducible scenarios.
 2.Running simulations to compare outcomes.
+
 3.Producing CSV outputs, plots, and a simple HTML visualization.
