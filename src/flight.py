@@ -31,3 +31,18 @@ class Flight:
             )
             self.passengers.append(passenger)
     
+    
+    def simulate_show_ups(self):
+        """Simulate which passengers show up"""
+        self.showed_up_passengers = []
+        for passenger in self.passengers:
+            if passenger.simulate_show_up():
+                self.showed_up_passengers.append(passenger)
+    
+    def get_overbooked_count(self) -> int:
+        """Calculate how many passengers need to be bumped"""
+        return max(0, len(self.showed_up_passengers) - self.capacity)
+    
+    def calculate_total_cost(self) -> float:
+        """Calculate total compensation cost for bumped passengers"""
+        return sum(p.get_compensation_cost() for p in self.bumped_passengers)
