@@ -15,3 +15,19 @@ class Flight:
         self.passengers: List[Passenger] = []
         self.showed_up_passengers: List[Passenger] = []
         self.bumped_passengers: List[Passenger] = []
+        
+    def generate_passengers(self):
+        """Generate random passengers for this flight"""
+        fare_classes = ['economy', 'business', 'first']
+        fare_weights = [0.7, 0.2, 0.1]
+        
+        for i in range(self.total_bookings):
+            passenger = Passenger(
+                passenger_id=f"{self.flight_id}_P{i:03d}",
+                fare_class=random.choices(fare_classes, fare_weights)[0],
+                booking_time=datetime.now(),
+                checkin_time=None,
+                show_up_probability=random.uniform(0.85, 0.95)
+            )
+            self.passengers.append(passenger)
+    
