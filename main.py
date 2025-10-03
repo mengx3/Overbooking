@@ -40,3 +40,21 @@ def main():
     
     # Run simulations
     print("\nRunning simulations...")
+    
+    try:
+        # Compare both policies
+        results = simulator.compare_policies()
+        
+        print("✓ Completed {} scenarios".format(args.num_scenarios))
+        print("✓ Simulated {} total flights".format(args.num_scenarios * args.num_flights))
+        
+        # Generate outputs
+        visualizer = Visualizer(output_dir=args.output_dir)
+        visualizer.generate_all_outputs(results)
+        
+        # Print summary statistics
+        print("\n" + "=" * 50)
+        print("SIMULATION RESULTS SUMMARY")
+        print("=" * 50)
+        
+        summary = results['summary']
