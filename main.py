@@ -21,4 +21,22 @@ def main():
                        help='Directory for output files')
     
     args = parser.parse_args()
+
+    print("=" * 50)
+    print("AIRLINE OVERBOOKING SCENARIO SIMULATOR")
+    print("=" * 50)
+    print("Scenarios: {}".format(args.num_scenarios))
+    print("Flights per scenario: {}".format(args.num_flights))
+    print("Policy: {}".format(args.policy))
+    print("Random seed: {}".format(args.seed))
+    print("=" * 50)
     
+    # Initialize simulator
+    simulator = OverbookingSimulator(
+        num_scenarios=args.num_scenarios,
+        num_flights_per_scenario=args.num_flights,
+        seed=args.seed
+    )
+    
+    # Run simulations
+    print("\nRunning simulations...")
