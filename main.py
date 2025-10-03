@@ -1,0 +1,24 @@
+import argparse
+from src.simulator import OverbookingSimulator
+from src.visualizer import Visualizer
+from src.policies import RandomPolicy, FIFOPolicy
+import sys
+import os
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+def main():
+    parser = argparse.ArgumentParser(description='Airline Overbooking Scenario Simulator')
+    parser.add_argument('--num-scenarios', type=int, default=50, 
+                       help='Number of scenarios to simulate')
+    parser.add_argument('--num-flights', type=int, default=20, 
+                       help='Number of flights per scenario')
+    parser.add_argument('--policy', choices=['random', 'fifo', 'both'], 
+                       default='both', help='Bumping policy to use')
+    parser.add_argument('--seed', type=int, default=42, 
+                       help='Random seed for reproducibility')
+    parser.add_argument('--output-dir', type=str, default='output', 
+                       help='Directory for output files')
+    
+    args = parser.parse_args()
+    
