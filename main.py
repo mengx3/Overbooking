@@ -58,3 +58,29 @@ def main():
         print("=" * 50)
         
         summary = results['summary']
+
+        for policy in ['RandomPolicy', 'FIFOPolicy']:
+            policy_data = summary[summary['policy'] == policy]
+            print("\n{}:".format(policy))
+            print("  Average passengers bumped: {:.2f}".format(policy_data['total_bumped'].mean()))
+            print("  Average total cost: ${:.2f}".format(policy_data['total_cost'].mean()))
+            print("  Average bumping rate: {:.3%}".format(policy_data['bumping_rate'].mean()))
+        
+        print("\n" + "=" * 50)
+        print("OUTPUT FILES GENERATED:")
+        print("=" * 50)
+        print("CSV files: {}/csv/".format(args.output_dir))
+        print("Plots: {}/plots/".format(args.output_dir))
+        print("HTML Dashboard: {}/html/dashboard.html".format(args.output_dir))
+        print("\nOpen the HTML dashboard in your browser to view interactive results!")
+        
+    except Exception as e:
+        print("\n Error during simulation: {}".format(str(e)))
+        import traceback
+        traceback.print_exc()
+        return 1
+    
+    return 0
+
+if __name__ == "__main__":
+    exit(main())
