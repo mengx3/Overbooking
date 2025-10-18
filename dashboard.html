@@ -109,7 +109,34 @@
                 <div class="stat-value">${randomStats.avgBumped.toFixed(1)}</div>
                 <div class="stat-comparison">Avg passengers bumped</div>
                 <div class="stat-comparison">Total cost: $${randomStats.avgCost.toFixed(2)}
-                
+               </div>
+              </div>
+              <div class="stat-card" style="background: linear-gradient(135deg, #A23B72 0%, #C73E1D 100%);">
+                <h3>FIFO Policy</h3>
+                <div class="stat-value">${fifoStats.avgBumped.toFixed(1)}</div>
+                <div class="stat-comparison">Avg passengers bumped</div>
+                <div class="stat-comparison">Total cost: $${fifoStats.avgCost.toFixed(2)}</div>
+              </div>
+              <div class="stat-card" style="background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%);">
+                <h3>Total Scenarios</h3>
+                <div class="stat-value">${randomStats.scenarios}</div>
+                <div class="stat-comparison">Per policy</div>
+              </div>
+              <div class="stat-card" style="background: linear-gradient(135deg, #F093FB 0%, #F5576C 100%);">
+                <h3>Total Flights</h3>
+                <div class="stat-value">${flightData.length / 2}</div>
+                <div class="stat-comparison">Across all scenarios</div>
+              </div>
+            `;
+
+            // Defer to chart and table renderers (to be added)
+            renderComparisonCharts(randomStats, fifoStats);
+            renderDistributionCharts();
+            renderTrendCharts();
+            renderSummaryTable(randomStats, fifoStats);
+  }
+</script>
+     
             <style>
             * { margin: 0; padding: 0; box-sizing: border-box; }
         
@@ -120,6 +147,7 @@
                 padding: 20px;
             }
 
+    
     .container {
         max-width: 1100px;
         margin: 0 auto;
