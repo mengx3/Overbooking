@@ -57,4 +57,15 @@ class OverbookingSimulator:
             })
         
         return scenario_stats
-    
+
+    def run_all_scenarios(self, policies: List[BumpingPolicy]) -> pd.DataFrame:
+        """Run all scenarios with specified policies"""
+        all_results = []
+        
+        for policy in policies:
+            print(f"Running scenarios with {policy.__class__.__name__}...")
+            for scenario_id in range(self.num_scenarios):
+                result = self.run_scenario(scenario_id, policy)
+                all_results.append(result)
+        
+        return all_results
