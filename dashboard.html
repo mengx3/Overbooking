@@ -81,6 +81,20 @@
         }
     </script>
 
+    <script>
+        function calculateStatistics(data, policy) {
+        const policyData = data.filter(d => d.policy === policy);
+        return {
+          avgBumped: policyData.reduce((sum, d) => sum + d.total_bumped, 0) / policyData.length,
+          avgCost: policyData.reduce((sum, d) => sum + d.total_cost, 0) / policyData.length,
+          avgRate: policyData.reduce((sum, d) => sum + d.bumping_rate, 0) / policyData.length,
+          totalBumped: policyData.reduce((sum, d) => sum + d.total_bumped, 0),
+          totalCost: policyData.reduce((sum, d) => sum + d.total_cost, 0),
+          scenarios: policyData.length
+        };
+      }
+    </script>
+    
     <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -271,5 +285,7 @@
     .stat-value { font-size: 28px; font-weight: 700; margin-bottom: 6px; }
     .stat-comparison { font-size: 13px; opacity: 0.95; }
     </style>
+
+    
 </body>
 </html>
