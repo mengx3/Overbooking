@@ -94,16 +94,31 @@
         };
       }
     </script>
-    
-    <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        min-height: 100vh;
-        padding: 20px;
-    }
+    <script>
+          function renderDashboard() {
+          // Calculate statistics
+            const randomStats = calculateStatistics(summaryData, 'RandomPolicy');
+            const fifoStats   = calculateStatistics(summaryData, 'FIFOPolicy');
+        
+            // Render stats cards
+            const statsGrid = document.getElementById('statsGrid');
+            statsGrid.innerHTML = `
+              <div class="stat-card">
+                <h3>Random Policy</h3>
+                <div class="stat-value">${randomStats.avgBumped.toFixed(1)}</div>
+                <div class="stat-comparison">Avg passengers bumped</div>
+                <div class="stat-comparison">Total cost: $${randomStats.avgCost.toFixed(2)}
+                
+            <style>
+            * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                min-height: 100vh;
+                padding: 20px;
+            }
 
     .container {
         max-width: 1100px;
