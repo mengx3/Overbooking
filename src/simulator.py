@@ -69,3 +69,40 @@ class OverbookingSimulator:
                 all_results.append(result)
         
         return all_results
+
+    def compare_policies(self) -> Dict[str, pd.DataFrame]:
+        """Run scenarios with both policies and compare"""
+        policies = [RandomPolicy(), FIFOPolicy()]
+        results = self.run_all_scenarios(policies)
+        
+        # Create summary DataFrame
+        summary_data = []
+        for result in results:
+            summary_data.append({
+                'scenario_id': result['scenario_id'],
+                'policy': result['policy'],
+                'total_bumped': result['total_passengers_bumped'],
+                'total_cost': result['total_cost'],
+                'bumping_rate': result['total_passengers_bumped'] / result['total_passengers_showed'] if result['total_passengers_showed'] > 0 else 0,
+                'flights_affected': result['flights_with_bumping']
+            })
+        
+        summary_df = pd.DataFrame(summary_data)
+        
+        # Create flight details DataFrame
+        flight_data = []
+        for result in results:
+            for flight in result['flight_details']:
+                flight_data.append({
+                    'scenario_id': result['scenario_id'],
+                    'policy': result['policy'],
+                    **flight
+                })
+        
+        flight_df = pd.DataFrame(flight_data)
+        
+        return {
+            'summary': summary_df,
+            'flights': flight_df,
+            'raw_results': results
+        }
