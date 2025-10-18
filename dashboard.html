@@ -134,9 +134,16 @@
             renderDistributionCharts();
             renderTrendCharts();
             renderSummaryTable(randomStats, fifoStats);
-  }
-</script>
-     
+              }
+            </script>
+
+            <div class="tabs">
+              <button class="tab active" onclick="showTab('comparison')">Policy Comparison</button>
+              <button class="tab" onclick="showTab('distribution')">Cost Distribution</button>
+              <button class="tab" onclick="showTab('trends')">Scenario Trends</button>
+              <button class="tab" onclick="showTab('table')">Detailed Data</button>
+            </div>
+    
             <style>
             * { margin: 0; padding: 0; box-sizing: border-box; }
         
