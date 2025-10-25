@@ -60,3 +60,38 @@ class Visualizer:
         plt.tight_layout()
         plt.savefig(os.path.join(self.plots_dir, 'cost_distribution.png'), dpi=100)
         plt.close()
+
+    def create_scenario_trends_plot(self, data: pd.DataFrame):
+        plt.figure(figsize=(12, 6))
+        
+        for policy in data['policy'].unique():
+            policy_data = data[data['policy'] == policy].sort_values('scenario_id')
+            plt.plot(policy_data['scenario_id'], policy_data['total_cost'], 
+                    label=policy, alpha=0.7, linewidth=1.5)
+        
+        plt.xlabel('Scenario ID', fontsize=12)
+        plt.ylabel('Total Cost ($)', fontsize=12)
+        plt.title('Cost Trends Across Scenarios', fontsize=14, fontweight='bold')
+        plt.legend()
+        plt.grid(alpha=0.3)
+        plt.tight_layout()
+        plt.savefig(os.path.join(self.plots_dir, 'scenario_trends.png'), dpi=100)
+        plt.close()
+        
+        print(f"  ✓ Plots saved to {self.plots_dir}")
+    
+    def generate_all_outputs(self, data: Dict[str, pd.DataFrame]):
+        print("\nGenerating outputs...")
+        
+        self.save_csv_files(data)
+        
+        self.create_bumping_comparison_plot(data['summary'])
+        self.create_cost_distribution_plot(data['summary'])
+        self.create_scenario_trends_plot(data['summary'])
+        
+        print(f"\n All outputs saved to {self.output_dir}/")
+        print("\n To view interactive dashboard:")
+        print("  1. Open dashboard.html in your browser")
+        print("  2. Load the CSV files from output/csv/")
+        print("     - scenario_summary.csv")
+        print("     - flight_details.csv")
