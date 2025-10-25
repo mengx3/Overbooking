@@ -72,27 +72,27 @@
     </div>
 
     <script>
-        function showTab(tabName) {
-            console.log("Switching to tab:", tabName);
-        }
-
-        function loadData() {
-            console.log("Load data will be implemented next week");
-        }
+            function showTab(tabName) {
+                console.log("Switching to tab:", tabName);
+            }
+    
+            function loadData() {
+                console.log("Load data will be implemented next week");
+            }
     </script>
 
     <script>
-        function calculateStatistics(data, policy) {
-        const policyData = data.filter(d => d.policy === policy);
-        return {
-          avgBumped: policyData.reduce((sum, d) => sum + d.total_bumped, 0) / policyData.length,
-          avgCost: policyData.reduce((sum, d) => sum + d.total_cost, 0) / policyData.length,
-          avgRate: policyData.reduce((sum, d) => sum + d.bumping_rate, 0) / policyData.length,
-          totalBumped: policyData.reduce((sum, d) => sum + d.total_bumped, 0),
-          totalCost: policyData.reduce((sum, d) => sum + d.total_cost, 0),
-          scenarios: policyData.length
-        };
-      }
+            function calculateStatistics(data, policy) {
+            const policyData = data.filter(d => d.policy === policy);
+            return {
+              avgBumped: policyData.reduce((sum, d) => sum + d.total_bumped, 0) / policyData.length,
+              avgCost: policyData.reduce((sum, d) => sum + d.total_cost, 0) / policyData.length,
+              avgRate: policyData.reduce((sum, d) => sum + d.bumping_rate, 0) / policyData.length,
+              totalBumped: policyData.reduce((sum, d) => sum + d.total_bumped, 0),
+              totalCost: policyData.reduce((sum, d) => sum + d.total_cost, 0),
+              scenarios: policyData.length
+            };
+          }
     </script>
 
     <script>
@@ -135,8 +135,33 @@
             renderTrendCharts();
             renderSummaryTable(randomStats, fifoStats);
               }
-            </script>
+    </script>
 
+    <script>
+          function renderComparisonCharts(randomStats, fifoStats) {
+            const bumpingTrace = {
+              x: ['Random Policy', 'FIFO Policy'],
+              y: [randomStats.avgBumped, fifoStats.avgBumped],
+              type: 'bar',
+              marker: { color: ['#667eea', '#A23B72'] }
+            };
+            Plotly.newPlot('bumpingChart', [bumpingTrace], {
+              margin: { t: 0 }, yaxis: { title: 'Average Passengers Bumped' }
+            });
+        
+            const costTrace = {
+              x: ['Random Policy', 'FIFO Policy'],
+              y: [randomStats.avgCost, fifoStats.avgCost],
+              type: 'bar',
+              marker: { color: ['#667eea', '#A23B72'] }
+            };
+            Plotly.newPlot('costChart', [costTrace], {
+              margin: { t: 0 }, yaxis: { title: 'Average Cost ($)' }
+            });
+          }
+    </script>
+
+    
             <div class="tabs">
               <button class="tab active" onclick="showTab('comparison')">Policy Comparison</button>
               <button class="tab" onclick="showTab('distribution')">Cost Distribution</button>
