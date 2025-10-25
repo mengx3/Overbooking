@@ -44,3 +44,19 @@ class Visualizer:
         plt.tight_layout()
         plt.savefig(os.path.join(self.plots_dir, 'bumping_comparison.png'), dpi=100)
         plt.close()
+
+    def create_cost_distribution_plot(self, data: pd.DataFrame):
+        plt.figure(figsize=(10, 6))
+        
+        for policy in data['policy'].unique():
+            policy_data = data[data['policy'] == policy]['total_cost']
+            plt.hist(policy_data, alpha=0.6, label=policy, bins=20)
+        
+        plt.xlabel('Total Cost ($)', fontsize=12)
+        plt.ylabel('Frequency', fontsize=12)
+        plt.title('Distribution of Compensation Costs', fontsize=14, fontweight='bold')
+        plt.legend()
+        plt.grid(axis='y', alpha=0.3)
+        plt.tight_layout()
+        plt.savefig(os.path.join(self.plots_dir, 'cost_distribution.png'), dpi=100)
+        plt.close()
