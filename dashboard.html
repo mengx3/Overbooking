@@ -161,23 +161,49 @@
           }
     </script>
 
-    
-            <div class="tabs">
-              <button class="tab active" onclick="showTab('comparison')">Policy Comparison</button>
-              <button class="tab" onclick="showTab('distribution')">Cost Distribution</button>
-              <button class="tab" onclick="showTab('trends')">Scenario Trends</button>
-              <button class="tab" onclick="showTab('table')">Detailed Data</button>
-            </div>
-    
-            <style>
-            * { margin: 0; padding: 0; box-sizing: border-box; }
+    <script>
+          function renderDistributionCharts() {
+            const randomCosts = summaryData.filter(d => d.policy === 'RandomPolicy').map(d => d.total_cost);
+            const fifoCosts   = summaryData.filter(d => d.policy === 'FIFOPolicy').map(d => d.total_cost);
         
-            body {
-                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                min-height: 100vh;
-                padding: 20px;
-            }
+            const trace1 = { x: randomCosts, type: 'histogram', name: 'Random Policy', opacity: 0.6, marker: { color: '#667eea' } };
+            const trace2 = { x: fifoCosts,   type: 'histogram', name: 'FIFO Policy',   opacity: 0.6, marker: { color: '#A23B72' } };
+        
+            Plotly.newPlot('distributionChart', [trace1, trace2], {
+              barmode: 'overlay',
+              margin: { t: 0 },
+              xaxis: { title: 'Total Cost ($)' },
+              yaxis: { title: 'Frequency' }
+            });
+        
+            const randomRates = summaryData.filter(d => d.policy === 'RandomPolicy').map(d => d.bumping_rate);
+            const fifoRates   = summaryData.filter(d => d.policy === 'FIFOPolicy').map(d => d.bumping_rate);
+        
+            const rateTrace1 = { y: randomRates, type: 'box', name: 'Random Policy', marker: { color: '#667eea' } };
+            const rateTrace2 = { y: fifoRates,   type: 'box', name: 'FIFO Policy',   marker: { color: '#A23B72' } };
+        
+            Plotly.newPlot('bumpingRateChart', [rateTrace1, rateTrace2], {
+              margin: { t: 0 }, yaxis: { title: 'Bumping Rate' }
+            });
+          }
+    </script>
+    
+    <div class="tabs">
+      <button class="tab active" onclick="showTab('comparison')">Policy Comparison</button>
+      <button class="tab" onclick="showTab('distribution')">Cost Distribution</button>
+      <button class="tab" onclick="showTab('trends')">Scenario Trends</button>
+      <button class="tab" onclick="showTab('table')">Detailed Data</button>
+    </div>
+
+    <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 20px;
+    }
 
     
     .container {
