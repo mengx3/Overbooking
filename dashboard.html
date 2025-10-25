@@ -226,6 +226,54 @@
           }
     </script>
 
+    <script>
+          function renderSummaryTable(randomStats, fifoStats) {
+            const table = document.getElementById('summaryTable');
+            table.innerHTML = `
+              <thead>
+                <tr>
+                  <th>Policy</th>
+                  <th>Scenarios</th>
+                  <th>Avg Bumped</th>
+                  <th>Total Bumped</th>
+                  <th>Avg Cost</th>
+                  <th>Total Cost</th>
+                  <th>Avg Bumping Rate</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Random Policy</strong></td>
+                  <td>${randomStats.scenarios}</td>
+                  <td>${randomStats.avgBumped.toFixed(2)}</td>
+                  <td>${randomStats.totalBumped}</td>
+                  <td>$${randomStats.avgCost.toFixed(2)}</td>
+                  <td>$${randomStats.totalCost.toFixed(2)}</td>
+                  <td>${(randomStats.avgRate * 100).toFixed(2)}%</td>
+                </tr>
+                <tr>
+                  <td><strong>FIFO Policy</strong></td>
+                  <td>${fifoStats.scenarios}</td>
+                  <td>${fifoStats.avgBumped.toFixed(2)}</td>
+                  <td>${fifoStats.totalBumped}</td>
+                  <td>$${fifoStats.avgCost.toFixed(2)}</td>
+                  <td>$${fifoStats.totalCost.toFixed(2)}</td>
+                  <td>${(fifoStats.avgRate * 100).toFixed(2)}%</td>
+                </tr>
+                <tr style="background: #f0f0f0;">
+                  <td><strong>Difference</strong></td>
+                  <td>-</td>
+                  <td>${(randomStats.avgBumped - fifoStats.avgBumped).toFixed(2)}</td>
+                  <td>${randomStats.totalBumped - fifoStats.totalBumped}</td>
+                  <td>$${(randomStats.avgCost - fifoStats.avgCost).toFixed(2)}</td>
+                  <td>$${(randomStats.totalCost - fifoStats.totalCost).toFixed(2)}</td>
+                  <td>${((randomStats.avgRate - fifoStats.avgRate) * 100).toFixed(2)}%</td>
+                </tr>
+              </tbody>
+            `;
+          }
+    </script>
+    
     <div class="tabs">
       <button class="tab active" onclick="showTab('comparison')">Policy Comparison</button>
       <button class="tab" onclick="showTab('distribution')">Cost Distribution</button>
