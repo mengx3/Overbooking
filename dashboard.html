@@ -187,7 +187,45 @@
             });
           }
     </script>
-    
+
+    <script>
+          function renderTrendCharts() {
+            const randomData = summaryData.filter(d => d.policy === 'RandomPolicy').sort((a, b) => a.scenario_id - b.scenario_id);
+            const fifoData   = summaryData.filter(d => d.policy === 'FIFOPolicy').sort((a, b) => a.scenario_id - b.scenario_id);
+        
+            const trace1 = {
+              x: randomData.map(d => d.scenario_id),
+              y: randomData.map(d => d.total_cost),
+              type: 'scatter', mode: 'lines', name: 'Random Policy',
+              line: { color: '#667eea' }
+            };
+            const trace2 = {
+              x: fifoData.map(d => d.scenario_id),
+              y: fifoData.map(d => d.total_cost),
+              type: 'scatter', mode: 'lines', name: 'FIFO Policy',
+              line: { color: '#A23B72' }
+            };
+            Plotly.newPlot('trendsChart', [trace1, trace2], {
+              margin: { t: 0 }, xaxis: { title: 'Scenario ID' }, yaxis: { title: 'Total Cost ($)' }
+            });
+        
+            let randomCumulative = 0, fifoCumulative = 0;
+            const cumTrace1 = {
+              x: randomData.map(d => d.scenario_id),
+              y: randomData.map(d => (randomCumulative += d.total_bumped)),
+              type: 'scatter', mode: 'lines', name: 'Random Policy', line: { color: '#667eea' }
+            };
+            const cumTrace2 = {
+              x: fifoData.map(d => d.scenario_id),
+              y: fifoData.map(d => (fifoCumulative += d.total_bumped)),
+              type: 'scatter', mode: 'lines', name: 'FIFO Policy', line: { color: '#A23B72' }
+            };
+            Plotly.newPlot('cumulativeChart', [cumTrace1, cumTrace2], {
+              margin: { t: 0 }, xaxis: { title: 'Scenario ID' }, yaxis: { title: 'Cumulative Passengers Bumped' }
+            });
+          }
+    </script>
+
     <div class="tabs">
       <button class="tab active" onclick="showTab('comparison')">Policy Comparison</button>
       <button class="tab" onclick="showTab('distribution')">Cost Distribution</button>
