@@ -60,3 +60,21 @@ class AIScenarioGenerator:
             'business': (0.92, 0.99),
             'leisure': (0.80, 0.90)
         }
+
+        self.risk_adjustments = {
+            'conservative': 0.95,
+            'balanced': 1.0,
+            'aggressive': 1.05
+        }
+        
+        self.season_factors = {
+            'normal': 1.0,
+            'peak': 1.1,
+            'off': 0.9,
+            'business': 1.05
+        }
+    
+    def generate_capacity(self) -> int:
+        if self.config.route_type == 'domestic':
+            weights = {'narrow': 0.7, 'wide': 0.1, 'regional': 0.2}
+        elif self.config.route_
