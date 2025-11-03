@@ -17,3 +17,25 @@ from src.passenger import Passenger
 from src.flight import Flight
 from src.policies import RandomPolicy, FIFOPolicy
 from src.visualizer import Visualizer
+
+app = Flask(__name__)
+CORS(app)
+
+@dataclass
+class ScenarioConfig:
+    """Configuration for AI-enhanced scenario generation"""
+    num_scenarios: int
+    num_flights: int
+    complexity: str
+    aircraft_types: List[str]
+    route_type: str
+    season: str
+    overbook_min: float
+    overbook_max: float
+    risk_tolerance: str
+    compensation_strategy: str
+    showup_profile: str
+    fare_classes: List[str]
+    ai_mode: str
+    custom_rules: str
+    seed: int
