@@ -39,3 +39,24 @@ class ScenarioConfig:
     ai_mode: str
     custom_rules: str
     seed: int
+
+class AIScenarioGenerator:
+    
+    def __init__(self, config: ScenarioConfig):
+        self.config = config
+        if config.seed:
+            random.seed(config.seed)
+            np.random.seed(config.seed)
+        self.aircraft_capacities = {
+            'narrow': (100, 200),
+            'wide': (200, 400),
+            'regional': (50, 100)
+        }
+        
+        self.showup_profiles = {
+            'normal': (0.85, 0.95),
+            'high': (0.90, 0.98),
+            'variable': (0.75, 0.95),
+            'business': (0.92, 0.99),
+            'leisure': (0.80, 0.90)
+        }
