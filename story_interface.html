@@ -42,3 +42,16 @@
 
     <form id="scenarioForm"></form>
   </div>
+
+<style>
+    .radio-group,.checkbox-group{display:flex;gap:20px;flex-wrap:wrap}
+    .radio-item,.checkbox-item{
+      display:flex;align-items:center;gap:8px;background:#fff;padding:10px 15px;border-radius:5px;border:2px solid #ddd;cursor:pointer;transition:all .3s
+    }
+    .radio-item:hover,.checkbox-item:hover{border-color:#667eea;background:#f0f4ff}
+    .radio-item.selected,.checkbox-item.selected{border-color:#667eea;background:#f0f4ff}
+    .slider-container{display:flex;align-items:center;gap:15px}
+    input[type="range"]{-webkit-appearance:none;height:8px;border-radius:5px;background:#ddd;outline:none;flex:1}
+    input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:#667eea;cursor:pointer}
+    .slider-value{min-width:60px;padding:5px 10px;background:#667eea;color:#fff;border-radius:5px;text-align:center;font-weight:bold}
+  </style>
