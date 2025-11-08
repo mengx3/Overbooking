@@ -165,3 +165,27 @@
         </div>
       </div>
       
+      <div class="info-box">
+        <p><strong>Tip:</strong> The AI will generate scenarios based on your inputs, creating realistic patterns that match your specified parameters. The generated data will be compatible with the analysis dashboard.</p>
+      </div>
+      <div class="button-group">
+        <button type="submit" class="btn-primary">Generate Scenarios</button>
+        <button type="button" class="btn-secondary" onclick="resetForm()">Reset Form</button>
+      </div>
+    </form>
+    <div class="progress-container" id="progressContainer">
+      <h3>Generating Scenarios...</h3>
+      <div class="progress-bar"><div class="progress-fill" id="progressFill">0%</div></div>
+      <p id="progressText">Initializing AI generator...</p>
+    </div>
+    <div class="result-container" id="resultContainer">
+      <h3>Scenarios Generated Successfully!</h3>
+      <p id="resultText"></p>
+      <div class="download-buttons">
+        <a href="#" class="download-btn" id="downloadSummary">Download Summary CSV</a>
+        <a href="#" class="download-btn" id="downloadFlights">Download Flight Details CSV</a>
+        <a href="dashboard.html" class="download-btn" style="background:#007bff;">📊 Open Analysis Dashboard</a>
+      </div>
+    </div>
+    <div class="error-message" id="errorMessage"></div>
+    
