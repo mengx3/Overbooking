@@ -131,3 +131,37 @@
     .error-message{display:none;padding:15px;background:#f8d7da;border:1px solid #f5c6cb;border-radius:5px;color:#721c24;margin-top:20px}
    </style>
    
+      <div class="form-section">
+        <h2>Overbooking Strategy</h2>
+        <div class="form-group">
+          <label for="overbookRange">Overbooking Rate Range (%)</label>
+          <div style="display:flex;gap:15px;">
+            <div style="flex:1;">
+              <label style="font-weight:normal;font-size:14px;">Min:</label>
+              <input type="number" id="overbookMin" min="100" max="115" value="100" step="1">
+            </div>
+            <div style="flex:1;">
+              <label style="font-weight:normal;font-size:14px;">Max:</label>
+              <input type="number" id="overbookMax" min="100" max="120" value="115" step="1">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Risk Tolerance</label>
+          <div class="radio-group">
+            <div class="radio-item"><input type="radio" id="conservative" name="risk" value="conservative"><label for="conservative">Conservative</label></div>
+            <div class="radio-item"><input type="radio" id="balanced" name="risk" value="balanced" checked><label for="balanced">Balanced</label></div>
+            <div class="radio-item"><input type="radio" id="aggressive" name="risk" value="aggressive"><label for="aggressive">Aggressive</label></div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Compensation Strategy</label>
+          <select id="compensation">
+            <option value="standard">Standard (DOT Minimum)</option>
+            <option value="generous">Generous (+50% Standard)</option>
+            <option value="premium">Premium (2x Standard)</option>
+            <option value="dynamic">Dynamic (Based on Fare Class)</option>
+          </select>
+        </div>
+      </div>
+      
