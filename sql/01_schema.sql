@@ -88,3 +88,27 @@ CREATE TABLE event_gap_overlap (
     is_gap         BOOLEAN NOT NULL,
     is_overlap     BOOLEAN NOT NULL
 );
+
+CREATE TABLE policy_comparison (
+    policy_id           INTEGER PRIMARY KEY REFERENCES policy(policy_id)
+                         ON DELETE CASCADE,
+    total_bumped_mean   DOUBLE PRECISION,
+    total_bumped_std    DOUBLE PRECISION,
+    total_cost_mean     DOUBLE PRECISION,
+    total_cost_std      DOUBLE PRECISION,
+    bumping_rate_mean   DOUBLE PRECISION,
+    bumping_rate_std    DOUBLE PRECISION
+);
+
+
+CREATE INDEX idx_flight_stats_policy
+    ON flight_stats(policy_id);
+
+CREATE INDEX idx_scenario_stats_policy
+    ON scenario_stats(policy_id);
+
+CREATE INDEX idx_event_policy_policy
+    ON event_policy(policy_id);
+
+CREATE INDEX idx_risk_event_scenario_flight
+    ON risk_event(scenario_id, flight_id);
