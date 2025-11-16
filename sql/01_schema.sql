@@ -67,3 +67,24 @@ CREATE TABLE risk_event (
         REFERENCES flight(flight_id, scenario_id)
         ON DELETE CASCADE
 );
+
+CREATE TABLE event_policy (
+    event_id      VARCHAR(100) NOT NULL REFERENCES risk_event(event_id)
+                   ON DELETE CASCADE,
+    policy_id     INTEGER NOT NULL REFERENCES policy(policy_id)
+                   ON DELETE CASCADE,
+    is_covered    BOOLEAN NOT NULL,
+
+    PRIMARY KEY (event_id, policy_id)
+);
+
+CREATE TABLE event_gap_overlap (
+    event_id       VARCHAR(100) PRIMARY KEY
+                   REFERENCES risk_event(event_id)
+                   ON DELETE CASCADE,
+    shortfall_sum  INTEGER NOT NULL,
+    policies       INTEGER NOT NULL,
+    covered_count  INTEGER NOT NULL,
+    is_gap         BOOLEAN NOT NULL,
+    is_overlap     BOOLEAN NOT NULL
+);
