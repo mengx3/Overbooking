@@ -24,3 +24,19 @@ CREATE TABLE flight (
     capacity       INTEGER NOT NULL CHECK (capacity > 0),
     PRIMARY KEY (flight_id, scenario_id)
 );
+
+CREATE TABLE flight_stats (
+    flight_id      VARCHAR(50) NOT NULL,
+    scenario_id    INTEGER NOT NULL,
+    policy_id      INTEGER NOT NULL REFERENCES policy(policy_id)
+                   ON DELETE CASCADE,
+    booked         INTEGER NOT NULL CHECK (booked >= 0),
+    showed_up      INTEGER NOT NULL CHECK (showed_up >= 0),
+    bumped         INTEGER NOT NULL CHECK (bumped >= 0),
+    cost           NUMERIC(10,2) NOT NULL CHECK (cost >= 0),
+
+    PRIMARY KEY (flight_id, scenario_id, policy_id),
+    FOREIGN KEY (flight_id, scenario_id)
+        REFERENCES flight(flight_id, scenario_id)
+        ON DELETE CASCADE
+);
