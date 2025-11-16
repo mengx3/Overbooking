@@ -204,3 +204,24 @@
     .download-btn{flex:1;padding:10px 20px;background:#28a745;color:#fff;text-decoration:none;border-radius:5px;text-align:center;transition:background .3s}
     .download-btn:hover{background:#218838}
    </style>
+      <div class="form-section">
+        <h2>👥 Passenger Behavior Patterns</h2>
+        <div class="form-group">
+          <label>Show-up Rate Profile</label>
+          <select id="showupProfile">
+            <option value="normal">Normal (85-95%)</option>
+            <option value="high">High Reliability (90-98%)</option>
+            <option value="variable">High Variability (75-95%)</option>
+            <option value="business">Business Heavy (92-99%)</option>
+            <option value="leisure">Leisure Heavy (80-90%)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Passenger Mix</label>
+          <div class="checkbox-group">
+            <div class="checkbox-item"><input type="checkbox" id="economy" name="fareClass" value="economy" checked><label for="economy">Economy (70%)</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="business" name="fareClass" value="business" checked><label for="business">Business (20%)</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="first" name="fareClass" value="first" checked><label for="first">First Class (10%)</label></div>
+          </div>
+        </div>
++      </div>
