@@ -224,4 +224,27 @@
             <div class="checkbox-item"><input type="checkbox" id="first" name="fareClass" value="first" checked><label for="first">First Class (10%)</label></div>
           </div>
         </div>
-+      </div>
+      </div>
+      <div class="form-section">
+        <h2>🧠 AI Enhancement Options</h2>
+        <div class="form-group">
+          <label>Scenario Generation Mode</label>
+          <div class="radio-group">
+            <div class="radio-item"><input type="radio" id="uniform" name="aiMode" value="uniform" checked><label for="uniform">Uniform Random</label></div>
+            <div class="radio-item"><input type="radio" id="realistic" name="aiMode" value="realistic"><label for="realistic">Realistic Patterns</label></div>
+            <div class="radio-item"><input type="radio" id="stress" name="aiMode" value="stress"><label for="stress">Stress Testing</label></div>
+            <div class="radio-item"><input type="radio" id="ml" name="aiMode" value="ml"><label for="ml">ML-Optimized</label></div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="customRules">Custom Business Rules (Optional)</label>
+          <textarea id="customRules" rows="4" placeholder="Enter any specific rules or constraints...
+Example: No overbooking on morning flights, Higher show-up rates for international flights, etc."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="seed">Random Seed <span class="tooltip">❓
+            <span class="tooltiptext">Use the same seed to reproduce identical scenarios</span>
+          </span></label>
+          <input type="number" id="seed" value="42" min="1">
+        </div>
+      </div>
