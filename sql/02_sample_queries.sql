@@ -57,3 +57,38 @@ SELECT
 FROM scenario_stats s
 JOIN policy p ON s.policy_id = p.policy_id
 QUALIFY cost_rank <= 5;
+
+-- Q6
+SELECT
+    f.flight_id,
+    f.scenario_id,
+    fs_fifo.bumped  AS fifo_bumped,
+    fs_rand.bumped  AS random_bumped
+FROM flight f
+JOIN flight_stats fs_fifo
+  ON f.flight_id = fs_fifo.flight_id
+ AND f.scenario_id = fs_fifo.scenario_id
+JOIN policy p_fifo
+  ON fs_fifo.policy_id = p_fifo.policy_id
+JOIN flight_stats fs_rand
+  ON f.flight_id = fs_rand.flight_id
+ AND f.scenario_id = fs_rand.scenario_id
+JOIN policy p_rand
+  ON fs_rand.policy_id = p_rand.policy_id
+WHERE p_fifo.policy_name = 'FIFOPolicy'
+  AND p_rand.policy_name = 'RandomPolicy'
+  AND fs_fifo.bumped > fs_rand.bumped
+ORDER BY f.scenario_id, f.flight_id;
+
+-- Q7
+SELECT
+    e.event_id,
+    e.scenario_id,
+    e.flight_id,
+    g.shortfall_sum,
+    g.policies,
+    g.covered_count
+FROM event_gap_overlap g
+JOIN risk_event e ON g.event_id = e.event_id
+WHERE g.is_gap = TRUE
+ORDER BY e.scenario_id, e.flight_id, e.event_id;
