@@ -92,3 +92,31 @@ FROM event_gap_overlap g
 JOIN risk_event e ON g.event_id = e.event_id
 WHERE g.is_gap = TRUE
 ORDER BY e.scenario_id, e.flight_id, e.event_id;
+
+-- Q8
+SELECT
+    ep.event_id,
+    COUNT(*) AS num_covering_policies
+FROM event_policy ep
+JOIN policy p ON ep.policy_id = p.policy_id
+WHERE ep.is_covered = TRUE
+GROUP BY ep.event_id
+HAVING COUNT(*) >= 2
+ORDER BY num_covering_policies DESC, ep.event_id;
+
+-- Q9
+SELECT
+    ep_rand.event_id
+FROM event_policy ep_rand
+JOIN policy p_rand ON ep_rand.policy_id = p_rand.policy_id
+WHERE p_rand.policy_name = 'RandomPolicy'
+  AND ep_rand.is_covered = TRUE
+  AND NOT EXISTS (
+        SELECT 1
+        FROM event_policy ep_fifo
+        JOIN policy p_fifo ON ep_fifo.policy_id = p_fifo.policy_id
+        WHERE p_fifo.policy_name = 'FIFOPolicy'
+          AND ep_fifo.event_id = ep_rand.event_id
+          AND ep_fifo.is_covered = TRUE
+      )
+ORDER BY ep_rand.event_id;
