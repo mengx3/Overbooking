@@ -36,3 +36,24 @@ WHERE pr.policy_name = 'RandomPolicy'
   AND sf.total_cost > 0
   AND (sf.total_cost - sr.total_cost) / sf.total_cost >= 0.20
 ORDER BY random_savings_pct DESC;
+
+-- Q4
+SELECT
+    fs.flight_id,
+    COUNT(DISTINCT fs.scenario_id) AS num_scenarios_overbooked
+FROM flight_stats fs
+WHERE fs.bumped > 0
+GROUP BY fs.flight_id
+HAVING COUNT(DISTINCT fs.scenario_id) >= 3
+ORDER BY num_scenarios_overbooked DESC, fs.flight_id;
+
+-- Q5
+SELECT
+    p.policy_name,
+    s.scenario_id,
+    s.total_cost,
+    RANK() OVER (PARTITION BY p.policy_name
+                 ORDER BY s.total_cost DESC) AS cost_rank
+FROM scenario_stats s
+JOIN policy p ON s.policy_id = p.policy_id
+QUALIFY cost_rank <= 5;
