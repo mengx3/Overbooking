@@ -120,3 +120,44 @@ WHERE p_rand.policy_name = 'RandomPolicy'
           AND ep_fifo.is_covered = TRUE
       )
 ORDER BY ep_rand.event_id;
+
+-- Q10
+CREATE OR REPLACE VIEW policy_performance AS
+SELECT
+    p.policy_name,
+    COUNT(*)                         AS num_scenarios,
+    AVG(s.total_bumped)              AS avg_bumped,
+    STDDEV_POP(s.total_bumped)       AS std_bumped,
+    AVG(s.total_cost)                AS avg_cost,
+    STDDEV_POP(s.total_cost)         AS std_cost,
+    AVG(s.bumping_rate)              AS avg_bumping_rate
+FROM scenario_stats s
+JOIN policy p ON s.policy_id = p.policy_id
+GROUP BY p.policy_name;
+
+-- Q11
+SELECT
+    fs.scenario_id,
+    p.policy_name,
+    fs.flight_id,
+    fs.cost,
+    RANK() OVER (
+        PARTITION BY fs.scenario_id, p.policy_name
+        ORDER BY fs.cost DESC
+    ) AS cost_rank_in_scenario
+FROM flight_stats fs
+JOIN policy p ON fs.policy_id = p.policy_id
+ORDER BY fs.scenario_id, p.policy_name, cost_rank_in_scenario;
+
+-- Q12
+WITH bad_scenarios AS (
+    SELECT DISTINCT scenario_id
+    FROM scenario_stats
+    WHERE total_bumped > 0
+)
+SELECT scenario_id
+FROM scenario
+EXCEPT
+SELECT scenario_id
+FROM bad_scenarios
+ORDER BY scenario_id;
