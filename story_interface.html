@@ -279,3 +279,63 @@ Example: No overbooking on morning flights, Higher show-up rates for internation
     // Initialize selected states
     document.querySelectorAll('input[type="radio"]:checked').forEach(r=>r.closest('.radio-item').classList.add('selected'));
     document.querySelectorAll('input[type="checkbox"]:checked').forEach(c=>c.closest('.checkbox-item').classList.add('selected'));
+
+    // Form submission
+    document.getElementById('scenarioForm').addEventListener('submit', async function(e){
+      e.preventDefault();
+      const formData = {
+        numScenarios: document.getElementById('numScenarios').value,
+        numFlights: document.getElementById('numFlights').value,
+        complexity: document.querySelector('input[name="complexity"]:checked').value,
+        aircraft: Array.from(document.querySelectorAll('input[name="aircraft"]:checked')).map(cb=>cb.value),
+        routeType: document.getElementById('routeType').value,
+        season: document.getElementById('season').value,
+        overbookMin: document.getElementById('overbookMin').value,
+        overbookMax: document.getElementById('overbookMax').value,
+        risk: document.querySelector('input[name="risk"]:checked').value,
+        compensation: document.getElementById('compensation').value,
+        showupProfile: document.getElementById('showupProfile').value,
+        fareClasses: Array.from(document.querySelectorAll('input[name="fareClass"]:checked')).map(cb=>cb.value),
+        aiMode: document.querySelector('input[name="aiMode"]:checked').value,
+        customRules: document.getElementById('customRules').value,
+        seed: document.getElementById('seed').value
+      };
+      if(formData.aircraft.length===0){showError('Please select at least one aircraft type.');return;}
+      if(formData.fareClasses.length===0){showError('Please select at least one fare class.');return;}
+      document.getElementById('progressContainer').style.display='block';
+      document.getElementById('resultContainer').style.display='none';
+      simulateGeneration(formData);
+    });
+
+    function simulateGeneration(formData){
+      let progress=0;
+      const fill=document.getElementById('progressFill');
+      const text=document.getElementById('progressText');
+      const interval=setInterval(()=>{
+        progress+=Math.random()*15;
+        if(progress>100)progress=100;
+        fill.style.width=progress+'%';
+        fill.textContent=Math.floor(progress)+'%';
+        if(progress<25) text.textContent='Initializing AI generator...';
+        else if(progress<50) text.textContent='Creating flight schedules...';
+        else if(progress<75) text.textContent='Generating passenger bookings...';
+        else if(progress<100) text.textContent='Running simulations...';
+        else{
+          text.textContent='Complete!'; clearInterval(interval); showResults(formData);
+        }
+      },500);
+    }
+
+    function showResults(formData){
+      setTimeout(()=>{
+        document.getElementById('progressContainer').style.display='none';
+        document.getElementById('resultContainer').style.display='block';
+        const totalFlights=formData.numScenarios*formData.numFlights;
+        document.getElementById('resultText').textContent=
+          `Successfully generated ${formData.numScenarios} scenarios with ${totalFlights} total flights. `+
+          `The AI has created realistic patterns based on your ${formData.aiMode} generation mode with ${formData.complexity} complexity.`;
+        document.getElementById('downloadSummary').onclick=function(e){e.preventDefault();alert('In production, this would download scenario_summary.csv');};
+        document.getElementById('downloadFlights').onclick=function(e){e.preventDefault();alert('In production, this would download flight_details.csv');};
+      },500);
+    }
+          
