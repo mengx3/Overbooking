@@ -22,7 +22,7 @@
   <div class="container">
     <h1> AI-Powered Airline Scenario Generator</h1>
   </div>
-</body>
+
 </html>
 <style>
     .form-section{margin-bottom:30px;padding:20px;background:#f8f9fa;border-radius:10px}
@@ -251,3 +251,14 @@ Example: No overbooking on morning flights, Higher show-up rates for internation
     </form>
       </div>
     </form>
+
+  <script>
+    // Update slider values
+    document.getElementById('numScenarios').addEventListener('input', function () {
+      document.getElementById('numScenariosValue').textContent = this.value;
+    });
+    document.getElementById('numFlights').addEventListener('input', function () {
+      document.getElementById('numFlightsValue').textContent = this.value;
+    });
+  </script>
+</body>
