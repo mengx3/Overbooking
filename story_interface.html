@@ -262,3 +262,20 @@ Example: No overbooking on morning flights, Higher show-up rates for internation
     });
   </script>
 </body>
+
+    // Handle radio button styling
+    document.querySelectorAll('input[type="radio"]').forEach(radio=>{
+      radio.addEventListener('change', function(){
+        document.querySelectorAll(`input[name="${this.name}"]`).forEach(r=>r.closest('.radio-item').classList.remove('selected'));
+        this.closest('.radio-item').classList.add('selected');
+      });
+    });
+    // Handle checkbox styling
+    document.querySelectorAll('input[type="checkbox"]').forEach(cb=>{
+      cb.addEventListener('change', function(){
+        this.closest('.checkbox-item').classList.toggle('selected', this.checked);
+      });
+    });
+    // Initialize selected states
+    document.querySelectorAll('input[type="radio"]:checked').forEach(r=>r.closest('.radio-item').classList.add('selected'));
+    document.querySelectorAll('input[type="checkbox"]:checked').forEach(c=>c.closest('.checkbox-item').classList.add('selected'));
