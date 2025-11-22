@@ -339,3 +339,24 @@ Example: No overbooking on morning flights, Higher show-up rates for internation
       },500);
     }
           
+    function resetForm(){
+      if(confirm('Are you sure you want to reset all form inputs?')){
+        document.getElementById('scenarioForm').reset();
+        document.getElementById('progressContainer').style.display='none';
+        document.getElementById('resultContainer').style.display='none';
+        document.querySelectorAll('.radio-item').forEach(i=>i.classList.remove('selected'));
+        document.querySelectorAll('.checkbox-item').forEach(i=>i.classList.remove('selected'));
+        document.querySelectorAll('input[type="radio"]:checked').forEach(r=>r.closest('.radio-item').classList.add('selected'));
+        document.querySelectorAll('input[type="checkbox"]:checked').forEach(c=>c.closest('.checkbox-item').classList.add('selected'));
+        document.getElementById('numScenariosValue').textContent='50';
+        document.getElementById('numFlightsValue').textContent='20';
+      }
+    }
+    function showError(message){
+      const errorDiv=document.getElementById('errorMessage');
+      errorDiv.textContent=message; errorDiv.style.display='block';
+      setTimeout(()=>{ errorDiv.style.display='none'; },5000);
+    }
+  </script>
+ </body>
+ </html>
