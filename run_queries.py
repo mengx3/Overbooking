@@ -22,9 +22,10 @@ def load_queries(sql_path: Path):
 def run_query(sql: str, params=None):
     conn = psycopg2.connect(
         host="localhost",
+        port=5432,
         dbname="overbooking_db",
-        user="your_user",
-        password="your_password"
+        user="ob_user",
+        password="ob_pass"
     )
     try:
         with conn:
@@ -44,7 +45,7 @@ def run_query(sql: str, params=None):
 if __name__ == "__main__":
     queries = load_queries(SQL_FILE)
     print("Available queries:", sorted(queries.keys()))
-    numbers = random.randint(1,21)
+    numbers = input("Enter nany numbers (1-21):")
     q_id = "Q{}".format(numbers)
 
     if q_id not in queries:
