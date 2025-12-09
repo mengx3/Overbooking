@@ -1,0 +1,5 @@
+,total_bumped,total_bumped,total_cost,total_cost,bumping_rate,bumping_rate
+,mean,std,mean,std,mean,std
+policy,,,,,,
+FIFOPolicy,22.56,12.47,7768.0,4477.63,0.01,0.0
+RandomPolicy,20.56,11.87,7190.0,4412.01,0.01,0.0
