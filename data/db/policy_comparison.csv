@@ -1,0 +1,3 @@
+policy_id,total_bumped_mean,total_bumped_std,total_cost_mean,total_cost_std,bumping_rate_mean,bumping_rate_std
+1,22.56,12.47,7768.0,4477.63,0.01,0.0
+2,20.56,11.87,7190.0,4412.01,0.01,0.0
