@@ -1,0 +1,107 @@
+scenario_id,flight_number,route,date,capacity,showed_up,bumped,policy,narrative,passenger_1_name,passenger_1_reason,passenger_1_emotion,passenger_2_name,passenger_2_reason,passenger_2_emotion,passenger_3_name,passenger_3_reason,passenger_3_emotion
+SCENARIO_20251031_224750,AA420,Chicago to Tokyo,"November 29, 2025",176,320,10,RandomPolicy,"On November 29, 2025, Flight AA420 from Chicago to Tokyo faced a challenging situation. With only 176 seats available, 320 passengers arrived at the gate, creating an overbooking crisis.
+
+The airline used a random selection system, like a lottery, to determine who would be bumped. This meant that anyone, regardless of their situation, could be selected.
+
+Among those affected:
+
+• Lucas Silva, a software engineer, was conducting a site inspection. When informed they were bumped, they felt frustrat...",Lucas Silva,conducting a site inspection,frustrated,Chen Zhang,moving to a new city for a fresh start,disappointed,Elena Petrova,meeting with potential investors,frustrated
+SCENARIO_20251031_224750,AA617,Los Angeles to Sydney,"November 18, 2025",260,145,9,FIFOPolicy,"On November 18, 2025, Flight AA617 from Los Angeles to Sydney faced a challenging situation. With only 260 seats available, 145 passengers arrived at the gate, creating an overbooking crisis.
+
+The airline used a 'last to check in, first to be bumped' policy. Passengers who arrived at the last minute would bear the consequences.
+
+Among those affected:
+
+• Elena Al-Rashid, a chef, was closing an important deal. When informed they were bumped, they felt frustrated, potentially losing a major opportu...",Elena Al-Rashid,closing an important deal,frustrated,Fatima Garcia,attending their daughter's wedding,disappointed,Sophie Garcia,meeting with potential investors,frustrated
+SCENARIO_20251031_224750,AA199,Boston to Tokyo,"November 03, 2025",100,201,8,FIFOPolicy,"On November 03, 2025, Flight AA199 from Boston to Tokyo faced a challenging situation. With only 100 seats available, 201 passengers arrived at the gate, creating an overbooking crisis.
+
+The airline used a 'last to check in, first to be bumped' policy. Passengers who arrived at the last minute would bear the consequences.
+
+Among those affected:
+
+• Raj Zhang, a social worker, was taking a long-awaited vacation. When informed they were bumped, they felt disappointed, having their plans disrupted.
+...",Raj Zhang,taking a long-awaited vacation,disappointed,Elena Johnson,taking a long-awaited vacation,disappointed,Sophie Johnson,meeting with potential investors,frustrated
+SCENARIO_20251031_224750,AA101,Los Angeles to Tokyo,"November 04, 2025",300,224,6,RandomPolicy,"On November 04, 2025, Flight AA101 from Los Angeles to Tokyo faced a challenging situation. With only 300 seats available, 224 passengers arrived at the gate, creating an overbooking crisis.
+
+The airline used a random selection system, like a lottery, to determine who would be bumped. This meant that anyone, regardless of their situation, could be selected.
+
+Among those affected:
+
+• Yuki Al-Rashid, a entrepreneur, was attending an emergency family situation. When informed they were bumped, they ...",Yuki Al-Rashid,attending an emergency family situation,devastated,Amara Murphy,attending a crucial board meeting,frustrated,Fatima Petrova,conducting a site inspection,frustrated
+SCENARIO_20251031_224750,AA955,Miami to Tokyo,"November 16, 2025",125,286,6,RandomPolicy,"On November 16, 2025, Flight AA955 from Miami to Tokyo faced a challenging situation. With only 125 seats available, 286 passengers arrived at the gate, creating an overbooking crisis.
+
+The airline used a random selection system, like a lottery, to determine who would be bumped. This meant that anyone, regardless of their situation, could be selected.
+
+Among those affected:
+
+• Miguel Dubois, a software engineer, was going to a best friend's graduation. When informed they were bumped, they felt d...",Miguel Dubois,going to a best friend's graduation,disappointed,Chen Garcia,rushing to see an ill parent,devastated,Elena Zhang,attending their daughter's wedding,disappointed
+SCENARIO_20251031_224750,AA156,Los Angeles to Toronto,"November 12, 2025",176,320,10,RandomPolicy,"On November 12, 2025, Flight AA156 from Los Angeles to Toronto faced a challenging situation. With only 176 seats available, 320 passengers arrived at the gate, creating an overbooking crisis.
+
+The airline used a random selection system, like a lottery, to determine who would be bumped. This meant that anyone, regardless of their situation, could be selected.
+
+Among those affected:
+
+• Sophie Patel, a teacher, was taking a long-awaited vacation. When informed they were bumped, they felt disappoin...",Sophie Patel,taking a long-awaited vacation,disappointed,Miguel Dubois,presenting at an international conference,frustrated,Chen Dubois,moving to a new city for a fresh start,disappointed
+SCENARIO_20251031_224750,AA358,New York to Tokyo,"November 18, 2025",260,145,9,FIFOPolicy,"On November 18, 2025, Flight AA358 from New York to Tokyo faced a challenging situation. With only 260 seats available, 145 passengers arrived at the gate, creating an overbooking crisis.
+
+The airline used a 'last to check in, first to be bumped' policy. Passengers who arrived at the last minute would bear the consequences.
+
+Among those affected:
+
+• David Kim, a doctor, was meeting with potential investors. When informed they were bumped, they felt frustrated, potentially losing a major opportun...",David Kim,meeting with potential investors,frustrated,Miguel Silva,taking a long-awaited vacation,disappointed,Yuki Dubois,moving to a new city for a fresh start,disappointed
+SCENARIO_20251031_224750,AA627,Boston to London,"November 26, 2025",100,201,8,FIFOPolicy,"On November 26, 2025, Flight AA627 from Boston to London faced a challenging situation. With only 100 seats available, 201 passengers arrived at the gate, creating an overbooking crisis.
+
+The airline used a 'last to check in, first to be bumped' policy. Passengers who arrived at the last minute would bear the consequences.
+
+Among those affected:
+
+• Amara Zhang, a business consultant, was presenting at an international conference. When informed they were bumped, they felt frustrated, potentially ...",Amara Zhang,presenting at an international conference,frustrated,Chen Okonkwo,visiting family for a reunion,disappointed,Priya Wang,attending an emergency family situation,devastated
+SCENARIO_20251031_224750,AA520,Chicago to London,"November 13, 2025",300,224,6,RandomPolicy,"On November 13, 2025, Flight AA520 from Chicago to London faced a challenging situation. With only 300 seats available, 224 passengers arrived at the gate, creating an overbooking crisis.
+
+The airline used a random selection system, like a lottery, to determine who would be bumped. This meant that anyone, regardless of their situation, could be selected.
+
+Among those affected:
+
+• Sophie Okonkwo, a retired professor, was closing an important deal. When informed they were bumped, they felt frustra...",Sophie Okonkwo,closing an important deal,frustrated,Elena Johnson,going to a best friend's graduation,disappointed,Fatima Petrova,attending a funeral,disappointed
+SCENARIO_20251031_224750,AA166,Miami to Sydney,"November 16, 2025",125,286,6,RandomPolicy,"On November 16, 2025, Flight AA166 from Miami to Sydney faced a challenging situation. With only 125 seats available, 286 passengers arrived at the gate, creating an overbooking crisis.
+
+The airline used a random selection system, like a lottery, to determine who would be bumped. This meant that anyone, regardless of their situation, could be selected.
+
+Among those affected:
+
+• Miguel Wang, a artist, was meeting with potential investors. When informed they were bumped, they felt frustrated, pote...",Miguel Wang,meeting with potential investors,frustrated,Chen Murphy,presenting at an international conference,frustrated,Raj Dubois,celebrating their anniversary,disappointed
+SCENARIO_20251031_224750,AA798,Boston to Sydney,"November 27, 2025",176,320,10,RandomPolicy,"On November 27, 2025, Flight AA798 from Boston to Sydney faced a challenging situation. With only 176 seats available, 320 passengers arrived at the gate, creating an overbooking crisis.
+
+The airline used a random selection system, like a lottery, to determine who would be bumped. This meant that anyone, regardless of their situation, could be selected.
+
+Among those affected:
+
+• Fatima Kim, a journalist, was taking a long-awaited vacation. When informed they were bumped, they felt disappointed, ...",Fatima Kim,taking a long-awaited vacation,disappointed,Fatima Okonkwo,presenting at an international conference,frustrated,Maria Tanaka,closing an important deal,frustrated
+SCENARIO_20251031_224750,AA155,Los Angeles to Paris,"November 13, 2025",260,145,9,FIFOPolicy,"On November 13, 2025, Flight AA155 from Los Angeles to Paris faced a challenging situation. With only 260 seats available, 145 passengers arrived at the gate, creating an overbooking crisis.
+
+The airline used a 'last to check in, first to be bumped' policy. Passengers who arrived at the last minute would bear the consequences.
+
+Among those affected:
+
+• Zara Johnson, a photographer, was meeting with potential investors. When informed they were bumped, they felt frustrated, potentially losing a ma...",Zara Johnson,meeting with potential investors,frustrated,Priya Al-Rashid,celebrating their anniversary,disappointed,James Garcia,attending a crucial board meeting,frustrated
+SCENARIO_20251031_224750,AA603,Miami to Paris,"November 08, 2025",100,201,8,FIFOPolicy,"On November 08, 2025, Flight AA603 from Miami to Paris faced a challenging situation. With only 100 seats available, 201 passengers arrived at the gate, creating an overbooking crisis.
+
+The airline used a 'last to check in, first to be bumped' policy. Passengers who arrived at the last minute would bear the consequences.
+
+Among those affected:
+
+• Oliver Al-Rashid, a teacher, was closing an important deal. When informed they were bumped, they felt frustrated, potentially losing a major opportunit...",Oliver Al-Rashid,closing an important deal,frustrated,Sophie Johnson,moving to a new city for a fresh start,disappointed,Yuki Garcia,visiting family for a reunion,disappointed
+SCENARIO_20251031_224750,AA194,Los Angeles to Mexico City,"November 13, 2025",300,224,6,RandomPolicy,"On November 13, 2025, Flight AA194 from Los Angeles to Mexico City faced a challenging situation. With only 300 seats available, 224 passengers arrived at the gate, creating an overbooking crisis.
+
+The airline used a random selection system, like a lottery, to determine who would be bumped. This meant that anyone, regardless of their situation, could be selected.
+
+Among those affected:
+
+• Maria Silva, a photographer, was going to a best friend's graduation. When informed they were bumped, they f...",Maria Silva,going to a best friend's graduation,disappointed,Yuki Dubois,conducting a site inspection,frustrated,Fatima Okonkwo,presenting at an international conference,frustrated
+SCENARIO_20251031_224750,AA662,New York to Tokyo,"November 19, 2025",125,286,6,RandomPolicy,"On November 19, 2025, Flight AA662 from New York to Tokyo faced a challenging situation. With only 125 seats available, 286 passengers arrived at the gate, creating an overbooking crisis.
+
+The airline used a random selection system, like a lottery, to determine who would be bumped. This meant that anyone, regardless of their situation, could be selected.
+
+Among those affected:
+
+• David Okonkwo, a nurse, was attending an emergency family situation. When informed they were bumped, they felt devast...",David Okonkwo,attending an emergency family situation,devastated,Chen Petrova,moving to a new city for a fresh start,disappointed,Oliver Murphy,conducting a site inspection,frustrated
